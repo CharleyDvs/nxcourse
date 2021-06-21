@@ -10,6 +10,8 @@ import CardContent from '@material-ui/core/CardContent';
 import { CardMedia } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
 
+import { formatRating } from '@nxegghead/store/util-formatters';
+
 export function App() {
   return (
     <>
@@ -41,7 +43,7 @@ export function App() {
                     component="p"
                     className="game-rating"
                   >
-                    <strong>Rating:</strong> {x.rating}
+                    <strong>Rating:</strong> {formatRating(x.rating)}
                   </Typography>
                 </CardContent>
               </CardActionArea>
