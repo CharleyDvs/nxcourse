@@ -12,14 +12,26 @@ import { Typography } from '@material-ui/core';
 
 import { formatRating } from '@nxegghead/store/util-formatters';
 
+import { Route, useHistory } from 'react-router-dom';
+
+import { StoreFeatureGameDetail } from '@nxegghead/store/feature-game-detail';
+
 export function App() {
+  const history = useHistory();
+
   return (
     <>
       <Header />
       <div className="container">
         <div className="games-layout">
           {getAllGames().map((x) => (
-            <Card key={x.id} className="game-card">
+            <Card
+              key={x.id}
+              className="game-card"
+              onClick={() => {
+                history.push(`/game/${x.id}`);
+              }}
+            >
               <CardActionArea>
                 <CardMedia
                   className="game-card-media"
@@ -51,6 +63,7 @@ export function App() {
           ))}
         </div>
       </div>
+      <Route path="/game/:id" component={StoreFeatureGameDetail} />
     </>
   );
 }
